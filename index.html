@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Kunal</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #ffccdd;
+      overflow: hidden;
+    }
+
+    .cloud, .heart {
+      position: absolute;
+      animation: float 5s infinite ease-in-out alternate;
+    }
+
+    .cloud {
+      width: 80px;
+      height: 50px;
+      background: white;
+      border-radius: 50px;
+      box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      transform: rotate(-45deg);
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-20px);
+      }
+    }
+
+    .letter-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .letter-button {
+      padding: 20px 40px;
+      background: #ff9aa2;
+      color: white;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .copy-page {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      background: white;
+      border: 2px solid black;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .note {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 18px;
+      white-space: pre-line;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Clouds -->
+  <div class="cloud" style="top: 10%; left: 20%;"></div>
+  <div class="cloud" style="top: 30%; left: 50%;"></div>
+  <div class="cloud" style="top: 60%; left: 70%;"></div>
+
+  <!-- Hearts -->
+  <div class="heart" style="top: 20%; left: 30%;"></div>
+  <div class="heart" style="top: 40%; left: 60%;"></div>
+  <div class="heart" style="top: 70%; left: 80%;"></div>
+
+  <!-- Letter Button -->
+  <div class="letter-container">
+    <button class="letter-button" onclick="openLetter()">Open Me</button>
+  </div>
+
+  <!-- Copy Page -->
+  <div id="copyPage" class="copy-page">
+    <h1 style="text-align: center; color: red;">Happy Birthday Shona</h1>
+    <p class="note" id="birthdayNote"></p>
+  </div>
+
+  <script>
+    const message = `Happiest Birthday Kunal ❤️,
+I am sorry I made your birthday stressful but I Love you so much ❤️
+and we will fix things with time.
+Happy 19th bday Kunal! I wish for your good health and prosperous life,
+and the best thing I will give you will be a better me.
+I promise you I will be my best in the coming year and the better person for you.
+In all your success and failure you will see me by your side supporting you.
+I want us to be together and I want our happy little successful life along with our parents.
+Hamare parents ko bhut khush rkhenge ham, they will be proud on us.
+I LOVE YOU ❤️
+you know shona, Everything i know about you makes me feel like how lucky I am to get a MAN like you,
+the way you love me shows me your lovey dubbyy side and adores me and hn sometime meri ankh dikhane mai chupp ho jana and mujhe kiss krte rhnaaa, and  meri saari insecurities se door krte rhna(hn abhi bhi ajati h but tum hta dete ho ❤️), and hn gussa krna and sbse important saamne se control krna,but chats pe gussa krne ke baad turnt realise krna, that really made me feel that u love me, merko apne friends se introduce krana, and ghr pe pta chlne prr when you said ki accept krr lunga then it made me realise that you really really really love me,
+I donno why i am so lucky to have you, really grateful to kanha ji that he gave me you..
+I LOVE YOU THE MOST ❤️
+with love,
+your bbg ❤️,
+your wifey ❤️`;
+
+    function openLetter() {
+      document.querySelector('.letter-container').style.display = 'none';
+      const copyPage = document.getElementById('copyPage');
+      const note = document.getElementById('birthdayNote');
+      copyPage.style.display = 'block';
+
+      let i = 0;
+      function typeLine() {
+        if (i < message.length) {
+          note.innerHTML += message.charAt(i);
+          i++;
+          setTimeout(typeLine, 50);
+        }
+      }
+      typeLine();
+    }
+  </script>
+</body>
+</html>
